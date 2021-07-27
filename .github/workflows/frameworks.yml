@@ -49,17 +49,21 @@ jobs:
 
       - run: dotnet build
 
-      - name: Run and create frameworks.json
-        run: dotnet run > frameworks.json
+      - name: Run and create index.json
+        run: dotnet run > index.json
 
-      - name: Format frameworks.json
-        run: node -e 'fs.writeFileSync("frameworks.json", JSON.stringify(require("./frameworks"), null, "\t"))'
+      - name: Format index.json
+        run: node -e 'fs.writeFileSync("index.json", JSON.stringify(require("./index"), null, "\t"))'
+
+      - run: git diff
+      - run: pwd
+      - run: env
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          commit-message: 'chore: update frameworks.json'
-          title: Update frameworks.json
-          body: Automatic update to frameworks.json file according to latest NuGet.Frameworks package
+          commit-message: 'chore: update index.json'
+          title: Update index.json
+          body: Automatic update to index.json file according to latest NuGet.Frameworks package
           branch: update-frameworks
           base: main
