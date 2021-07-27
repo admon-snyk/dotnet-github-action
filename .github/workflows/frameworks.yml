@@ -11,7 +11,7 @@ jobs:
   update:
     defaults:
       run:
-        working-directory: temp
+        working-directory: ./temp
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
