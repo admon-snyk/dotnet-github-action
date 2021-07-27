@@ -15,13 +15,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Setup .NET Core SDK 5.0.x
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '5.0.x'
-      - run: dotnet new console
+
+      - name: Create new dotnot console app
+        run: dotnet new console
+
       - run: dotnet add package NuGet.Frameworks
-      - run: |
+
+      - name: Add c# code to generate frameworks from NuGet
+        run: |
           echo '
             using System;
             using NuGet.Frameworks;
@@ -40,8 +46,20 @@ jobs:
               }
             }
           ' > Program.cs
+
       - run: dotnet build
-      - run: dotnet run > frameworks.json
-      - run: env
+
+      - name: Run and create frameworks.json
+        run: dotnet run > frameworks.json
+
+      - name: Format frameworks.json
+        run: node -e 'fs.writeFileSync("frameworks.json", JSON.stringify(require("./frameworks"), null, "\t"))'
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: 'chore: update frameworks.json'
+          title: Update frameworks.json
+          body: Automatic update to frameworks.json file according to latest NuGet.Frameworks package
+          branch: update-frameworks
+          base: main
