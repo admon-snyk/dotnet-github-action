@@ -63,7 +63,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: 'chore: update index.json'
-          title: Update index.json
+          title: Update frameworks/index.json
           body: Automatic update to index.json file according to latest NuGet.Frameworks package
           branch: update-frameworks
           base: main
