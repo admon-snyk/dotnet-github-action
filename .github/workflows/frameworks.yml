@@ -1,0 +1,64 @@
+name: Auto update .NET frameworks json
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron:  '0 6 * * *'
+
+jobs:
+  update-frameworks-json:
+    defaults:
+      run:
+        working-directory: ./frameworks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET Core SDK 5.0.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+
+      - name: Create new dotnot console app
+        run: dotnet new console
+
+      - run: dotnet add package NuGet.Frameworks
+
+      - name: Add c# code to generate frameworks from NuGet
+        run: |
+          echo '
+            using System;
+            using NuGet.Frameworks;
+            using System.Text.Json;
+
+            namespace app
+            {
+              class Program
+              {
+                static void Main(string[] args)
+                {
+                  var obj = new DefaultFrameworkMappings();
+                  string jsonString = JsonSerializer.Serialize(obj);
+                  Console.WriteLine(jsonString);
+                }
+              }
+            }
+          ' > Program.cs
+
+      - run: dotnet build
+
+      - name: Run and create index.json
+        run: dotnet run > index.json
+
+      - name: Format json
+        run: node -e 'fs.writeFileSync("index.json", JSON.stringify(require("./index"), null, "\t"))'
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: 'chore: update frameworks/index.json'
+          title: Update frameworks/index.json
+          body: Automatic update to frameworks/index.json file according to latest NuGet.Frameworks package
+          branch: update-frameworks-json
