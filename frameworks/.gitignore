@@ -2,4 +2,4 @@
 *
 # Except this file
 !.gitignore
-!frameworks.json
+!index.json
