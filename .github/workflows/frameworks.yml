@@ -9,6 +9,9 @@ on:
 
 jobs:
   update:
+    defaults:
+      run:
+        working-directory: temp
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
