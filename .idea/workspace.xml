@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91391e9a-7fc2-44be-90d3-d3b2a45ba652" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frameworks/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/frameworks.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/frameworks.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/.keep" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +42,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1627358542952</updated>
-      <workItem from="1627358545792" duration="1105000" />
+      <workItem from="1627358545792" duration="1614000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="627" y="340" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1627359721566">
+      <screen x="0" y="23" width="1792" height="1017" />
+    </state>
+    <state x="627" y="340" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1017@0.23.1792.1017" timestamp="1627359721566" />
   </component>
 </project>
