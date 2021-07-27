@@ -1,18 +1,17 @@
 {
 	"IdentifierSynonyms": [
 		{
-				"Key": "NETFramework1", "Value": ".NETFramework"
-				}
-	,
-
-
-		{
-
-			"Key23": ".NET",
-			"Value31": ".NETFramework"
+			"Key": "NETFramework",
+			"Value": ".NETFramework"
 		},
-
-
+		{
+			"Key": ".NET",
+			"Value": ".NETFramework"
+		},
+		{
+			"Key": "NETCore",
+			"Value": ".NETCore"
+		},
 		{
 			"Key": "NETPortable",
 			"Value": ".NETPortable"
