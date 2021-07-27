@@ -1,0 +1,7 @@
+# Ignore everything in this directory
+*
+
+# Except those files
+!.gitignore
+!index.json
+!README.md
