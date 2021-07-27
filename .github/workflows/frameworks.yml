@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup .NET Core SDK 5.x
-        uses: actions/setup-dotnet@v1.7.2
+      - name: Setup .NET Core SDK 5.0.x
+        uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.x'
+          dotnet-version: '5.0.x'
       - run: dotnet new console
       - run: dotnet add package NuGet.Frameworks
       - run: |
